@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Promoted Dealers {% endblock %}
+
+{% load static %}
+{% block body %}
+  <head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    {% comment %} .row {
+      margin: 100px;
+    } {% endcomment %}
+      
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title"><strong>Promoted Dealers</strong></h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+                        <td><strong>Dealer Name</strong></td>
+                        <td><strong>Phone</strong></td>
+                        <td><strong>Email</strong></td>
+                        <td><strong>Location</strong></td>
+                        <td><strong>Shop Description</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shop in shops %}
+                        <tr><strong>
+                        <td>{{shop.name}}</td>
+                        <td>{{shop.phone}}</td>
+                        <td>{{shop.email}}</td>
+                        <td>{{shop.location}}</td>
+                        <td>{{shop.description}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+  </div>
+</div>
+        <div class="card-footer">
+            <p align='center'> Do you wish to Promote Your Business? Simply
+            <a href="{% url 'root:contacts' %}" class="nav-item nav-link"> contact us</a></p>
+        </div>
+    </div>
+
+{% endblock %}

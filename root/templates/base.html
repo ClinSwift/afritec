@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+ 
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Gill Sans", sans-serif;;
+    }
+
+    header {
+      position: fixed;
+      background: #22242A;
+      padding: 20px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    
+    .sidebar {
+      background: none;
+      margin-top: 0px;
+      padding-top: 10px;
+      position: fixed;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      transition: 0.5s;
+      transition-property: left;
+    }
+
+    .sidebar .profile_image {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar h4 {
+      color: #ccc;
+      margin-top: 0;
+      
+    }
+
+    .sidebar a {
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 60px;
+      text-decoration: none;
+      padding-left: 40px;
+      box-sizing: border-box;
+      transition: 0.5s;
+
+    }
+
+    .sidebar a:hover {
+      background: #19B3D3;
+    }
+
+    .sidebar i {
+      padding-right: 10px;
+    }
+
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      font-size: 20px;
+      margin: 5px 0;
+      transition: 0.5s;
+      transition-property: color;
+    }
+
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      font-size: 20px;
+      margin: 5px 0;
+      transition: 0.5s;
+      transition-property: color;
+    }
+
+    label #sidebar_btn:hover {
+      color: #19B3D3;
+    }
+
+    .content {
+      margin-left: 250px;
+      background: url(background.png) no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      transition: 0.5s;
+    }
+
+    #check:checked~.content {
+      margin-left: 60px;
+    }
+
+    .bg-dark {
+    background-color: #212529!important;
+	}
+    .navbar-brand {
+		margin: -20px;
+    }
+  </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'root/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+</head>
+
+<body>
+
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+					<a href="/store" class="navbar-brand">
+						<img  id="web-icon" src="{% static 'root/images/afritec.jfif' %}">
+					</a>
+          
+					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+          
+						<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+							<div class="navbar-nav">
+								<p style="padding-left: 15px;" class="nav-item nav-link active"></p>
+								<a href="/store" class="nav-item nav-link">Store</a>
+							</div>
+							<div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+								<ul class="navbar-nav text-right">
+									</li>
+									<li class="nav-item active">
+										<a href="{% url 'root:about' %}" class="nav-item nav-link">About Us</a>
+									</li>
+									<li class="nav-item active">
+										<a href="{% url 'root:contacts' %}" class="nav-item nav-link">Contact Us</a>
+									</li>                
+                  <li class="nav-item active">
+                      <a href="#" class="nav-item nav-link">Profile</a>
+                  </li>
+                  <li class="nav-item active">
+                      <a href="{% url 'root:logout' %}" class="nav-item nav-link">Sign out</a>                        
+                  </li>                
+              </ul>
+    </div>
+</div>
+</nav>
+
+      
+  <!--header area end-->
+  
+  <!--sidebar start-->
+  <div class="sidebar" style="margin-top:0px;">
+    <center>
+
+      <img src=" " class="profile_image" alt="">
+      <h4 style="color: black ;">{{request.user.username}}</h4>
+      <h6 style="color: black ;">( Customer )</h6>
+
+    </center>
+
+    <a href="{% url 'root:dashboard' %}" style="color: black ;"><i class="fas fa-tachometer-alt" ></i><span>Dashboard</span></a>
+    <a href="{% url 'root:my_orders' %}" style="color: black ;"><i class="fas fa-tachometer-alt"></i><span>My Orders</span></a>
+    <a href="{% url 'root:make_complaint' %}" style="color: black ;"><i class="fas fa-question-circle"></i><span>Make a Complain</span></a>
+    <a href="{% url 'root:complaint_history' %}" style="color: black ;"><i class="fas fa-sync-alt"></i><span>Complains made</span></a>
+	  <a href="{% url 'root:dealers' %}" style="color: black ;"><i class="fab fa-product-hunt"></i><span>Promoted dealers</span></a>    
+  </div>
+  <!--sidebar end-->
+
+  <!--content start-->
+  <div class="content">
+    <br><br><br><br><br>
+    {% block body %}
+
+    {% endblock %}
+
+
+    <br><br><br>
+  
+  </div>
+  
+  <!--content end-->
+</body>
+
+</html>
+

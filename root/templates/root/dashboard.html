@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %} Dashboard {% endblock %}
+{%load static%}
+{% block body %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+
+      a:link {
+        text-decoration: none;
+      }
+  
+      .order-card {
+        color: rgb(255, 255, 255);
+      }
+  
+      .bg-c-blue {
+        background: none;
+      }
+  
+      .bg-c-green {
+        background:none;
+      }
+  
+  
+      .bg-c-pink {
+        background: none;
+      }
+  
+  
+      .card {
+        -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        border: 1px solid black;
+        margin-bottom: 30px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+  
+      .card .card-block {
+        padding: 45px;
+      }
+  
+      .order-card i {
+        font-size: 26px;
+      }
+  
+      .f-left {
+        float: left;
+      }
+  
+      .f-right {
+        float: right;
+      }
+      header {
+      left: 0px;
+      right: 0px;
+    }
+
+    </style>
+  </head>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"> <a href="{% url 'root:store' %}" style="text-decoration: none;color:blue;font-weight:bold">Available Products</a> </h6>
+            <h2 class="text-right" style="text-decoration: none;color:blue;font-weight:bold"><i  class="fab fa-product-hunt f-left"></i><span>{{available_products}}</span></h2>            
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'root:my_orders' %}" style="text-decoration: none;color:green;font-weight:bold">Total Orders Made</a> </h6>
+            <h2 class="text-right" style="text-decoration: none;color:green;font-weight:bold"><i class="fab fa-product-hunt f-left"></i><span>{{orders_made}}</span></h2>            
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-8 col-xl-4">
+        <div class="card bg-c-pink order-card">
+          <div class="card-block">
+            <h6 class="m-b-30"><a href="{% url 'root:complaint_history' %}" style="text-decoration: none;color:black;font-weight:bold">My Complaints</a></h6>
+            <h2 class="text-right" style="text-decoration: none;color:black;font-weight:bold"><i class="fas fa-question-circle f-left"></i><span>{{total_complaints}}</span></h2>            
+          </div>
+        </div>
+      </div>
+       
+    </div>
+  </div>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+{% endblock %}

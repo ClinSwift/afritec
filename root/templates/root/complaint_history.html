@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+{%load static%}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      padding-left: 60px;
+      margin-top:15px;
+      font-size: 20px;
+      
+      transition: 0.5s;
+      transition-property: color;
+    }
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title"><strong>Complaint History</strong></h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+        <th>Serial No.</th>
+          <th>Complaint</th>
+            <th>Admin Comment</th> 
+          <th> Asked Date</th>
+          
+          
+        </tr>
+      </thead>
+      {% for t in complaints %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{t.description}}</td>
+
+        <td>{{t.admin_comment}}</td>
+        <td>{{t.asked_date}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock %}

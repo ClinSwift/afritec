@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block title %} Logout{% endblock %}
+
+{% block body %}      
+{% if user.is_authenticated %}
+        Hi {{ user.username}}!
+        <p><a href = "{% url 'logout' %}"> Logout </a></p>
+    {% else %}
+        <p> You are not logged in</p>
+        <a href = "{% url 'login'  %}">Log In </a>
+    {% endif %}
+
+{% endblock %}

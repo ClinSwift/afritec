@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block body %}
+<head>
+    <<style>
+       
+  a:link {
+        text-decoration: none;
+      }
+  label #sidebar_btn {
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  cursor: pointer;
+  left: 300px;
+  padding-left: 60px;
+  margin-top:15px;
+  font-size: 20px;
+  
+  transition: 0.5s;
+  transition-property: color;
+}
+  </style>
+</head>
+<h5 style="text-align:center; color:blue;">MAKE COMPLAINT</h5>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="course_name"><strong>Complaint</strong></label>
+      {% render_field complaintForm.description class="form-control" placeholder="Describe your problem here" %}
+
+
+    </div>
+    
+    
+
+    <button type="submit" class="btn btn-primary">SUBMIT</button>
+  </form>
+<br><br><br><br>
+{% endblock %}

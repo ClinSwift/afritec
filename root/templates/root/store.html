@@ -1,0 +1,31 @@
+
+{% extends 'main.html' %}
+{% block title %} Store {% endblock %}
+{% load static %}
+
+{% block body %}
+<div class="alert ">
+  <span class="closebtn">&times;</span>
+  <strong>Alert !!</strong>&nbsp;&nbsp; New Products Available!!
+</div>
+<div class="row">
+{% for product in products %}
+  <div class="col-xs-3 col-sm-3 col-md-3">
+    <img class="thumbnail" src="{{ product.imageURL }}">
+      <div class="box-element product">
+        <h6><strong>{{ product.name }}</strong></h6>
+        <hr>
+        <!--The class update-cart(below) is to be used for javascript -->
+        <button data-product = "{{product.id}}" data-action = "add"
+           class="btn btn-outline-secondary add-btn update-cart">Add to Cart
+        </button>
+        <h4 style="display: inline-block; float: right">
+          <strong>Ksh. {{ product.price|floatformat:2 }}</strong>
+        </h4>
+      </div>
+  </div>
+{% endfor %}
+
+</div>
+{% endblock %}
+

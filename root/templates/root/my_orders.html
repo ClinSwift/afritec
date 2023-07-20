@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+<head>
+   <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title"><strong>My Orders</strong></h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+        <th>Serial No.</th>
+          <th>Transaction_Id</th> 
+            <th> Order Date</th>
+            <th>Transaction Complete</th>  
+        </tr>
+      </thead>
+      {% for o in orders %}
+      <tr>
+        <td> {{ o.id }}</td>
+        <td> {{o.transaction_id}}</td>
+        <td>{{o.date_ordered}}</td>
+        <td>{{o.complete}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock %}

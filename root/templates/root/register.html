@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Afritec</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+	<meta name="description" content="Afritec Store is a Demo Ecommerce website made with Django and Javascript. It has functionalities such as Add to cart, and PayPal Payment Integration">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'root/style.css' %}"/>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+	<style type="text/css">
+    
+    .bg-dark {
+    background-color: #212529!important;
+	}
+    .navbar-brand {
+		margin: -20px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+					<a href="/store" class="navbar-brand">
+						<img  id="web-icon" src="{% static 'root/images/afritec.jfif' %}">
+					</a>
+					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+						<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+							<div class="navbar-nav">
+								<p style="padding-left: 15px;" class="nav-item nav-link active"></p>
+								<a href="/login" class="nav-item nav-link">Customer</a>          
+          						<a href="/admin" class="nav-item nav-link">Admin</a>
+							</div>
+							<div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+								<ul class="navbar-nav text-right">
+									
+									<li class="nav-item active">
+										<a href="{% url 'root:about' %}" class="nav-item nav-link">About Us</a>
+									</li>
+									<li class="nav-item active">
+										<a href="{% url 'root:contacts' %}" class="nav-item nav-link">Contact Us</a>
+									</li>
+									<li class="nav-item active">
+										<a href="{% url 'root:login' %}">
+											<img  id="cart-icon" src="{% static 'root/images/user.png' %}">
+										</a>
+									</li>
+								</ul>
+							</div>
+				</nav>
+{% load crispy_forms_tags %}         
+
+<!--Register--> 
+<div class="container py-5">
+	<h1>Register</h1>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form|crispy }}                    
+				<div class="form-group"> 
+					<div class="col-sm-offset-2 col-sm-10"> 
+                            <button type="submit" class="btn btn-success">Submit</button> 
+                        </div> 
+                    </div>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+</body>
+</html>
+
